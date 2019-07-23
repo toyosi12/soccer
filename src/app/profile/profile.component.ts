@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   public snackBarRef;
   public basePath = "http://localhost:8080/soccer-api/"
   public passportPath;
+  public buttonText = "Update"
   selectedFile: File = null;
 
   constructor(private fb: FormBuilder, private auth: AuthService, private _userService: UserService,
@@ -73,6 +74,7 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile(user) {
+    this.buttonText = "Loading...";
     let fd;
     let smessage;
     if (this.selectedFile == null) {
@@ -91,12 +93,13 @@ export class ProfileComponent implements OnInit {
       if (data.success) {
         smessage = "Update successful";
       } else {
-        smessage = "Failed, Please try again";
+        smessage = data.message;
       }
       this.snackBarRef = this.snackBar.open(smessage, 'dismiss');
       setTimeout(()=>{
         this.snackBarRef.dismiss();
       },5000);
+      this.buttonText = "Update";
     });
    
   }

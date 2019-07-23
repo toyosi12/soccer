@@ -2,10 +2,10 @@
 <div class="container-fluid">
         <div class="row">
                 <div class="col-md-6">
-                        <img src={{passportPath}} alt="user avatar" id='avatar' style="width:60px !important;height:60px" class="mr-3" />
+                        <img (click)="fileInput.click()" src={{passportPath}} alt="user avatar" id='avatar' style="width:60px !important;height:60px; cursor:pointer" class="mr-3" />
                         <input #fileInput mat-button type="file" style="display:none" (change)="displayPassport($event.target.files)">
-                        <button type="button" mat-button style="background-color:#999;" class="mr-3" (click)="fileInput.click()">Edit
-                            Passport</button>(max-size: 200kb)
+                        <!-- <button type="button" mat-button style="background-color:#999;" class="mr-3" (click)="fileInput.click()">Edit
+                            Passport</button> -->
                 </div>
            
                 <div class="col-md-4"></div>
@@ -54,7 +54,7 @@
                
 
                 <div class="col-md-12">
-                        <button mat-raised-button color="primary" id="update-btn" [disabled]="!updateForm.valid">Update Details</button>
+                        <button mat-raised-button color="primary" id="update-btn" [disabled]="!updateForm.valid" class="mb-4">{{ buttonText }}</button>
                 </div>
 
         </div>
