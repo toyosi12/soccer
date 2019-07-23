@@ -1,0 +1,86 @@
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5 mx-auto">
+                <div class="card shadow-lg  pt-2 pb-3 animated fadeIn">
+                    <div class="card-body">
+                      <h4>Registration</h4><br />
+                      <form [formGroup]="RegForm" (ngSubmit)="registerUser(RegForm)">
+                          <mat-form-field appearance="outline">
+                              <mat-label>Last Name:</mat-label>
+                              <input matInput formControlName="lname" />
+                          </mat-form-field>
+                          <p class="text-danger aler" *ngIf="!RegForm.controls['lname'].valid &&
+                            RegForm.controls['lname'].touched"><small>*Required</small></p>
+                
+                          <mat-form-field appearance="outline">
+                              <mat-label>First Name:</mat-label>
+                              <input matInput formControlName="fname" />
+                          </mat-form-field>
+                          <p class="text-danger aler" *ngIf="!RegForm.controls['fname'].valid &&
+                            RegForm.controls['fname'].touched"><small>*Required</small></p>
+                
+                          <mat-form-field appearance="outline">
+                              <mat-label>Email:</mat-label>
+                              <input matInput type="email" formControlName="email" />
+                          </mat-form-field>
+                          <p class="text-danger aler" *ngIf="!RegForm.controls['email'].valid &&
+                            RegForm.controls['email'].touched"><small>*Input a correct email</small></p>
+                
+                          <mat-form-field appearance="outline">
+                              <mat-label>Phone:</mat-label>
+                              <input matInput type="tel" formControlName="phone" />
+                          </mat-form-field>
+                          <p class="text-danger aler" *ngIf="!RegForm.controls['lname'].valid &&
+                            RegForm.controls['lname'].touched"><small>*Required</small></p>
+
+                          <mat-form-field appearance="outline">
+                              <mat-label>Username:</mat-label>
+                              <input matInput formControlName= "username" (input)="checkIfUserNameExists()" />
+                          </mat-form-field>
+                          <p class="aler"><small #userExists></small></p>
+                          <p class="text-danger aler" *ngIf="!RegForm.controls['username'].valid &&
+                            RegForm.controls['username'].touched"><small>*Required</small></p>
+                
+                          <mat-form-field appearance="outline">
+                              <mat-label>Password:</mat-label>
+                              <input matInput type="password" formControlName="password" />
+                          </mat-form-field>
+                          <p class="text-danger aler" *ngIf="!RegForm.controls['password'].valid &&
+                            RegForm.controls['password'].touched"><small>*Required and must be up to 8 characters</small></p>
+                
+                          <mat-form-field appearance="outline">
+                              <mat-label>Confirm Password:</mat-label>
+                              <input matInput type="password" formControlName="cpassword" />
+                          </mat-form-field>
+                          <p class="text-danger aler" *ngIf="!RegForm.controls['cpassword'].valid &&
+                            RegForm.controls['cpassword'].touched"><small>*Required</small></p>
+                          <p class="text-danger aler" *ngIf="RegForm.controls['password'].value != 
+                          RegForm.controls['cpassword'].value && 
+                          (RegForm.controls['cpassword'].touched || RegForm.controls['cpassword'].touched)"><small>*Passwords do not match</small></p>
+                
+                          <mat-form-field appearance="outline">
+                              <mat-label>Registration Type:</mat-label>
+                                <mat-select formControlName="usertype">
+                                    <mat-option *ngFor = "let userType of userTypes" [value]="userType.user_type_id">{{ userType.user_type}}</mat-option>
+                                </mat-select>
+                          </mat-form-field>
+                          <p class="text-danger aler" *ngIf="!RegForm.controls['usertype'].valid &&
+                            RegForm.controls['usertype'].touched"><small>*Required</small></p>
+                
+                          <button mat-raised-button color="primary" class="btn-block" id="reg-btn" #regButton
+                          [disabled]="!RegForm.valid
+                          || RegForm.controls['password'].value != RegForm.controls['cpassword'].value">
+                          {{buttonText}}  
+                        </button>
+                      </form>
+                      <br />
+                      <p><small>Already registered? <a routerLink="/reg/login" class="text-success">login!</a></small></p>
+                
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+

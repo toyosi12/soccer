@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <form>
+                <mat-form-field appearance="outline">
+                    <mat-label>Invite player by typing username</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let user of users">{{user.user_name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+</div>
