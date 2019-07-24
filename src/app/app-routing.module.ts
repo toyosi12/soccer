@@ -10,6 +10,10 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { AuthGuard } from './auth.guard';
 import { LogoutComponent } from './logout/logout.component';
 import { TeamBoardComponent } from './team-board/team-board.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminGuard } from './admin.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/reg/login', pathMatch: 'full' },
   { 
@@ -23,7 +27,7 @@ const routes: Routes = [
   {
     path:'home', component:HomeLayoutComponent, canActivate: [AuthGuard],
     children:[
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'profile', pathMatch: 'full' },
       {path:'dashboard', component: DashboardComponent},
       {path: 'profile', component: ProfileComponent},
       {path: 'calendar', component: CalendarComponent},
@@ -31,6 +35,14 @@ const routes: Routes = [
       {path: 'team-board', component: TeamBoardComponent}
     ]
   },
+  {
+    path:'admin-layout', component:AdminLayoutComponent,
+    children:[
+      {path: '', redirectTo: 'admin', pathMatch: 'full'},
+      {path: 'admin-home', component: AdminHomeComponent, canActivate: [AdminGuard]},
+      {path: 'admin', component: AdminComponent}
+    ]
+  }
 ];
 
 @NgModule({

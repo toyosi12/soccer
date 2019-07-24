@@ -12,6 +12,10 @@ export class UserService {
     return this.http.get<any>("/soccer-api/is-logged-in.php");
   }
 
+  isAdmin(): Observable<any> {
+    return this.http.get<any>("/soccer-api/is-admin.php");
+  }
+
   getUserDetails(){
     return this.http.get<any>("/soccer-api/get-user-details.php");
   }

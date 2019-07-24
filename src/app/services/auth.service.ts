@@ -30,4 +30,8 @@ export class AuthService {
   loginUser(userDetails){
     return this.http.post<any>('/soccer-api/login.php', userDetails);
   }
+
+  loginAdmin(userDetails){
+    return this.http.post<any>('/soccer-api/login_admin.php', userDetails);
+  }
 }

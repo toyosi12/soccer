@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   public image = "../../assets/avatar.png";
   public passport;
   public snackBarRef;
-  public basePath = "http://localhost:8080/soccer-api/"
+  public basePath = "https://ionicbasis.com/soccer-api/"
   public passportPath;
   public buttonText = "Update"
   selectedFile: File = null;

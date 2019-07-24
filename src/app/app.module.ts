@@ -18,6 +18,16 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './logout/logout.component';
 import { TeamBoardComponent } from './team-board/team-board.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { AdminComponent } from './admin/admin.component';
+import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { DeleteConfirmComponent } from './delete-confirm/delete-confirm.component';
+import { LogoutAdminComponent } from './logout-admin/logout-admin.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +41,13 @@ import { TeamBoardComponent } from './team-board/team-board.component';
     ProfileComponent,
     CalendarComponent,
     LogoutComponent,
-    TeamBoardComponent
+    TeamBoardComponent,
+    AdminComponent,
+    AdminNavbarComponent,
+    AdminLayoutComponent,
+    AdminHomeComponent,
+    DeleteConfirmComponent,
+    LogoutAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +57,15 @@ import { TeamBoardComponent } from './team-board/team-board.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
+  entryComponents:[
+    DeleteConfirmComponent,
+    LogoutAdminComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="example-toolbar">
+    <mat-toolbar-row>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                  <span style="position:relative; top: 2px; font-size:0.7em">IONICBASIS ADMIN<small>(Registered users)</small></span>
+                </div>
+                <div class="col-6 text-right">
+                    <small><a  (click) = "openDialog()">Logout</a></small>
+                </div>
+               
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<cdk-virtual-scroll-viewport itemSize="100" >
+<div class="container-fluid pt-5">
+    <div class="card mt-3 animated slideInUp shadow" *cdkVirtualFor = "let r of registered">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <img *ngIf="r.passport != null && r.passport != ''" src="{{basePath + r.passport}}" style="width:50px; height:50px" class="rounded-circle" />{{passportPath}}
+                    <img *ngIf="r.passport == null || r.passport == ''" src="../../assets/avatar.png" style="width:50px; height:50px" class="rounded-circle" />{{passportPath}}
+                </div>
+                <div class="col-4">
+                    <p>{{r.last_name + " " + r.first_name}}</p>
+                </div>
+                <div class="col-3">
+                    <p>{{r.user_type}}</p>
+                </div>
+                <div class="col-2 text-right">
+                    <!-- <button type="button" mat-icon-button title="view"><mat-icon>visibility</mat-icon></button> -->
+                    <button type="button" mat-icon-button title="delete" (click)="deleteUser(r.user_id)"><mat-icon style="color: red">delete</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</cdk-virtual-scroll-viewport>
+
