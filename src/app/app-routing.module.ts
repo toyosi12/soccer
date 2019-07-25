@@ -38,7 +38,6 @@ const routes: Routes = [
   {
     path:'admin-layout', component:AdminLayoutComponent,
     children:[
-      {path: '', redirectTo: 'admin', pathMatch: 'full'},
       {path: 'admin-home', component: AdminHomeComponent, canActivate: [AdminGuard]},
       {path: 'admin', component: AdminComponent}
     ]

@@ -20,11 +20,9 @@ export class UserService {
     return this.http.get<any>("/soccer-api/get-user-details.php");
   }
 
-  updateDetails(usr): Observable<any> {
-    return this.http.post<any>(
-      "/soccer-api/update-user-details.php",
-      usr
-    );
+  updateDetails(usr){
+    console.log(usr);
+    return this.http.post<any>("/soccer-api/update-user-details.php",usr);
   }
 
   getUsers(){
