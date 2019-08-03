@@ -28,6 +28,18 @@ export class UserService {
   getUsers(){
     return this.http.get<any>("/soccer-api/get_users.php");
   }
+  saveTeam(details){
+    return this.http.post<any>("/soccer-api/save-team.php", details);
+  }
+
+  sendInvite(details){
+    return this.http.post<any>("/soccer-api/send-invite.php", details);
+  }
+
+  getTeamMembers(){
+    return this.http.get<any>("/soccer-api/get-team-members.php");
+
+  }
 
   logout() {
     return this.http.get<any>("/soccer-api/logout.php");

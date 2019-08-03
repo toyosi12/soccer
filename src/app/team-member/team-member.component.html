@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <button mat-raised-button routerLink="/home/team-board">Back</button>
+        </div>
+        <div class="col-md-6 mb-3">
+                <img (click)="fileInput.click()" src={{passportPath}} alt="user avatar" id='avatar' style="width:60px !important;height:60px; cursor:pointer" class="mr-3" />
+                <input #fileInput mat-button type="file" style="display:none" (change)="displayPassport($event.target.files)">
+                <!-- <button type="button" mat-button style="background-color:#999;" class="mr-3" (click)="fileInput.click()">Edit
+                    Passport</button> -->
+        </div>
+   
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+                <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput value="{{last_name}}" disabled  />
+                </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                                <mat-label>First Name</mat-label>
+                                <input matInput value={{first_name}} disabled  />
+                        </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                                <mat-label>Email</mat-label>
+                                <input matInput value={{email}} disabled  />
+                        </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                                <mat-label>Phone</mat-label>
+                                <input matInput value={{phone}} disabled  />
+                        </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                                <mat-label>Sport</mat-label>
+                                <input matInput value={{sport}} disabled />
+                        </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+                        <mat-form-field appearance="outline">
+                                <mat-label>School</mat-label>
+                                <input matInput value={{school}} disabled  />
+                        </mat-form-field>
+        </div>
+    </div>
+
+</div>

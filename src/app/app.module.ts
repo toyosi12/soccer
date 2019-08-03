@@ -27,7 +27,8 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DeleteConfirmComponent } from './delete-confirm/delete-confirm.component';
 import { LogoutAdminComponent } from './logout-admin/logout-admin.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
+import { TeamMemberComponent } from './team-member/team-member.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { LogoutAdminComponent } from './logout-admin/logout-admin.component';
     AdminLayoutComponent,
     AdminHomeComponent,
     DeleteConfirmComponent,
-    LogoutAdminComponent
+    LogoutAdminComponent,
+    TeamMemberComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +61,7 @@ import { LogoutAdminComponent } from './logout-admin/logout-admin.component';
     FormsModule,
     ReactiveFormsModule,
     ScrollingModule,
+    NgSelectModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

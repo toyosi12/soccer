@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   public image = "../../assets/avatar.png";
   public passport;
   public snackBarRef;
-  public basePath = "https://ionicbasis.com/soccer-api/"
+  public basePath = "http://localhost:8080/soccer-api/"
   public passportPath;
   public buttonText = "Update"
   selectedFile: File = null;
@@ -62,7 +62,7 @@ export class ProfileComponent implements OnInit {
       // console.log(this.selectedFile);
       var reader = new FileReader();
       reader.onload = (event: any) => {
-        this.image = event.target.result;
+        this.passportPath = event.target.result;
         this.updateForm.value.passport = this.image;
         //console.log(event.target.result);
       };

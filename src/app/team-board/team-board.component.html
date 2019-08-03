@@ -1,14 +1,81 @@
-<div class="container-fluid">
+<div class="container-fluid" style="padding-bottom: 100px;">
     <div class="row">
         <div class="col-md-12">
-            <form>
-                <mat-form-field appearance="outline">
-                    <mat-label>Invite player by typing username</mat-label>
-                    <mat-select>
-                        <mat-option *ngFor="let user of users">{{user.user_name}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <form (ngSubmit)="saveTeam(teamForm.value)" [formGroup]="teamForm">
+                    <div class="form-group">
+                        <input class="form-control" type="email" placeholder="Team Name(must be at least 5 characters long)" formControlName="teamName" />
+                        <button mat-raised-button color="primary" [disabled]="!teamForm.valid">{{ buttonText }}</button>
+                    </div>
             </form>
+            <form (ngSubmit)="sendInvite(inviteForm.value)" [formGroup]="inviteForm">
+                    <ng-select
+                        [items]="users"
+                        placeholder="Invite user by email"
+                        bindValue="email"
+                        bindLabel="email"
+                        formControlName="inviteEmail"
+
+                    >
+
+                    </ng-select>
+                    <button mat-raised-button color="primary" [disabled]="!inviteForm.valid">{{ buttonText2 }}</button>
+            </form>
+
+            <main class="card mt-3">
+                <div class="card-header">
+                            <div class="card-title">Team Members</div>
+                        </div>
+                <div class="card-body" style="max-height:400px; overflow-y:scroll">
+                    <div class="card mt-3 animated fadeIn shadow" *ngFor = "let r of teamMembers">
+                        <a (click)="handleRoute(r)">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img *ngIf="r.passport != null && r.passport != ''" src="{{basePath + r.passport}}" style="width:50px; height:50px" class="rounded-circle" />{{passportPath}}
+                                        <img *ngIf="r.passport == null || r.passport == ''" src="../../assets/avatar.png" style="width:50px; height:50px" class="rounded-circle" />{{passportPath}}
+                                    </div>
+                                    <div class="col-7">
+                                        <p>{{r.last_name}}</p>
+                                    </div>
+                                    
+                                    <div class="col-2 text-right">
+                                        <!-- <button type="button" mat-icon-button title="view"><mat-icon>visibility</mat-icon></button> -->
+                                        <!-- <button type="button" mat-icon-button title="delete" (click)="deleteUser(r.user_id)"><mat-icon style="color: red">delete</mat-icon></button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                </div>
+            </main>
+
+            <main class="card mt-3">
+                    <div class="card-header">
+                            <div class="card-title">Invited Athletes</div>
+                    </div>
+                <div class="card-body" style="max-height:400px; overflow-y:scroll">
+                        
+
+                    <div class="card mt-3 animated fadeIn shadow" *ngFor = "let r of invitedMembers">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img *ngIf="r.passport != null && r.passport != ''" src="{{basePath + r.passport}}" style="width:50px; height:50px" class="rounded-circle" />{{passportPath}}
+                                        <img *ngIf="r.passport == null || r.passport == ''" src="../../assets/avatar.png" style="width:50px; height:50px" class="rounded-circle" />{{passportPath}}
+                                    </div>
+                                    <div class="col-4">
+                                        <p>{{r.last_name}}</p>
+                                    </div>
+                                   
+                                    <div class="col-2 text-right">
+                                        <!-- <button type="button" mat-icon-button title="view"><mat-icon>visibility</mat-icon></button> -->
+                                        <!-- <button type="button" mat-icon-button title="delete" (click)="deleteUser(r.user_id)"><mat-icon style="color: red">delete</mat-icon></button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </main>
         </div>
     </div>
 </div>

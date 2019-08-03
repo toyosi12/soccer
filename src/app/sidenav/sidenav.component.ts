@@ -9,7 +9,7 @@ import { LogoutComponent } from '../logout/logout.component';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnDestroy {
-  public basePath = "https://ionicbasis.com/soccer-api/"
+  public basePath = "http://localhost:8080/soccer-api/"
   public passportPath;
   public userType;
   mobileQuery: MediaQueryList;

@@ -1,3 +1,7 @@
-form *{
+form *:not(button){
     width:100%;
+}
+
+a{
+    cursor: pointer;
 }

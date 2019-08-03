@@ -13,7 +13,7 @@ import { LogoutAdminComponent } from '../logout-admin/logout-admin.component';
 })
 export class AdminHomeComponent implements OnInit {
   public registered;
-  public basePath = "https://ionicbasis.com/soccer-api/"
+  public basePath = "http://localhost:8080/soccer-api/"
   public passportPath;
   public dialogRef;
   constructor(private _adminService: AdminService, private dialog?: MatDialog) { }

@@ -14,6 +14,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminGuard } from './admin.guard';
+import { TeamMemberComponent } from './team-member/team-member.component';
 const routes: Routes = [
   { path: '', redirectTo: '/reg/login', pathMatch: 'full' },
   { 
@@ -32,7 +33,8 @@ const routes: Routes = [
       {path: 'profile', component: ProfileComponent},
       {path: 'calendar', component: CalendarComponent},
       {path:'logout', component: LogoutComponent},
-      {path: 'team-board', component: TeamBoardComponent}
+      {path: 'team-board', component: TeamBoardComponent},
+      {path: 'team-board/:id', component: TeamMemberComponent}
     ]
   },
   {
