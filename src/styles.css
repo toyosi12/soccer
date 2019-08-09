@@ -3,6 +3,8 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~animate.css/animate.min.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import 'flatpickr/dist/flatpickr.css';
 body{
     background-color: rgb(245, 244, 244);
 }
@@ -16,4 +18,9 @@ body{
     width:40px;
     height:40px;
     border-radius: 50%;
+}
+button#fab{
+    position: fixed;
+    bottom:15px;
+    right:15px;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,10 @@ export class UserService {
 
   getUserDetails(){
     return this.http.get<any>("/soccer-api/get-user-details.php");
+  }
+
+  getMyTeam(){
+    return this.http.get<any>("/soccer-api/get-my-team.php");
   }
 
   updateDetails(usr){
@@ -41,7 +45,28 @@ export class UserService {
 
   }
 
+  saveEvents(events){
+    return this.http.post<any>("/soccer-api/save-events.php", events);
+  }
+
+  getEvents(){
+    return this.http.get<any>("/soccer-api/get-events.php");
+  }
+
+  deleteEvent(event){
+    return this.http.post<any>("/soccer-api/delete-event.php", event);
+  }
+
+  _sendMessage(data){
+    return this.http.post<any>("/soccer-api/send-chat.php",data);
+  }
+
+  getChats(data){
+    return this.http.post<any>("/soccer-api/get-chats.php",data);
+
+  }
   logout() {
     return this.http.get<any>("/soccer-api/logout.php");
   }
+
 }

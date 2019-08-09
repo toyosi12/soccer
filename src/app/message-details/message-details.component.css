@@ -1,0 +1,28 @@
+#message{
+    position: fixed;
+    bottom:0;
+    width:82%;
+}
+#message-box{
+    width:100%;
+    resize: none;
+    border-radius: 4px;
+}
+#body{
+    height: 80vh;
+    overflow-y: scroll;
+}
+.chat-box{
+    font-size:0.8em;
+    
+}
+.me{
+    background-color: #d8f3c1;
+    border-radius: 4px;
+
+}
+.you{
+    background-color: #f2f3f1;
+    border-radius: 4px;
+
+}

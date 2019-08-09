@@ -17,6 +17,7 @@ export class TeamBoardComponent implements OnInit {
   public buttonText2 = "Send Invite";
   public snackBarRef;
   public teamMembers;
+  public teamName;
   public invitedMembers;
   public basePath = "http://localhost:8080/soccer-api/"
 
@@ -35,7 +36,7 @@ export class TeamBoardComponent implements OnInit {
     this._userService.getUsers().subscribe(data => {
       this.users = data;
     })
-
+    this.getTeam();
     this.getTeamMembers();
   }
 
@@ -57,12 +58,19 @@ export class TeamBoardComponent implements OnInit {
     })
   }
 
+  getTeam(){
+    this._userService.getMyTeam().subscribe(data => {
+      this.teamForm.controls['teamName'].setValue(data[0].team_name);
+    })
+  }
+
   getTeamMembers(){
     this._userService.getTeamMembers().subscribe(data => {
       this.teamMembers = data.filter(data => data.status == 'accepted');
       console.log(this.teamMembers);
 
       this.invitedMembers = data.filter(data => data.status == 'invited');
+     
     })
   }
 

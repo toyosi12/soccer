@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
@@ -29,6 +29,14 @@ import { DeleteConfirmComponent } from './delete-confirm/delete-confirm.componen
 import { LogoutAdminComponent } from './logout-admin/logout-admin.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { TeamMemberComponent } from './team-member/team-member.component';
+
+//for calendar
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageDetailsComponent } from './message-details/message-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,9 +57,12 @@ import { TeamMemberComponent } from './team-member/team-member.component';
     AdminHomeComponent,
     DeleteConfirmComponent,
     LogoutAdminComponent,
-    TeamMemberComponent
+    TeamMemberComponent,
+    MessagesComponent,
+    MessageDetailsComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -62,6 +73,12 @@ import { TeamMemberComponent } from './team-member/team-member.component';
     ReactiveFormsModule,
     ScrollingModule,
     NgSelectModule,
+    NgbModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

@@ -42,7 +42,7 @@ export class SidenavComponent implements OnDestroy {
           {icon: 'calendar_today', name: 'Calendar', route: 'calendar'},
           {icon: 'fastfood', name: 'Team Nutrition', route: 'team-nutrition'},
           {icon: 'accessibility', name: 'Quick Workout', route: 'quick-workout'},
-          {icon: 'message', name: 'Messages', route: 'Messages'},
+          {icon: 'message', name: 'Messages', route: 'messages'},
           {icon: 'notifications', name: 'Notifications', route: 'Notifications'},
           {icon: 'show_chart', name: 'Team stats', route: 'my-stats'},
           {icon: 'group_work', name: 'Team Board', route: 'team-board'},
@@ -51,13 +51,13 @@ export class SidenavComponent implements OnDestroy {
       }else if(this.userType == 'athlete'){
         this.fillerNav = [
           {icon: 'account_circle', name: 'Profile', route: 'profile'},
-          {icon: 'accessibility', name: 'Quick Workout', route: 'quick-workout'},
-          {icon: 'fastfood', name: 'Nutrition', route: 'team-nutrition'},
-          {icon: 'message', name: 'Messages', route: 'Messages'},
+          // {icon: 'accessibility', name: 'Quick Workout', route: 'quick-workout'},
+          // {icon: 'fastfood', name: 'Nutrition', route: 'team-nutrition'},
+          {icon: 'message', name: 'Messages', route: 'messages'},
           {icon: 'notifications', name: 'Notifications', route: 'Notifications'},
-          {icon: 'show_chart', name: 'My stats', route: 'my-stats'},
-          {icon: 'group_work', name: 'Team Board', route: 'team-board'},
-          {icon: 'how_to_reg', name: 'Mental Prep', route: 'mental-prep'},
+          // {icon: 'show_chart', name: 'My stats', route: 'my-stats'},
+          // {icon: 'group_work', name: 'Team Board', route: 'team-board'},
+          // {icon: 'how_to_reg', name: 'Mental Prep', route: 'mental-prep'},
           {icon: 'settings', name: 'Settings', route: 'settings'},
         ]
       }

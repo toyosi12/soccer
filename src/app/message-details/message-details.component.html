@@ -1,0 +1,39 @@
+<div class="container-fluid">
+        <div class="card shadow mt-2" style="border-radius: 5px;" id="body">
+                <div class="pt-2">
+                        <button type="button" mat-icon-button title="Go back" routerLink="/home/messages"><mat-icon style="font-size: 1.9em">keyboard_arrow_left</mat-icon></button>
+                        <img src="{{passportPath}}" alt="user avater" id='avatar' />
+                        {{last_name + " " + first_name}}
+                        <hr />
+                        <div class="chat-box m-2">
+                            <div  *ngFor="let c of chatsToDisplay">
+                                <!-- load messages sent by current logged in user -->
+                                <div class="col-8 p-2 mb-2 me ml-auto" *ngIf="c.sender_id == my_id">
+                                    <span><i>me:</i></span>
+                                    <div>
+                                        {{ c.message }}
+                                    </div>
+                                </div>
+
+                                <!-- load messages sent by the person at the other end -->
+                                <div class="col-8 p-2 mb-2 you mr-auto" *ngIf="c.sender_id == recipient_id">
+                                        <span><i>{{first_name}}:</i></span>
+                                        <div>{{ c.message }}
+                                            <br />
+                                            <span><small><mat-icon>mark</mat-icon>{{c.date_sent}}</small></span>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row" id="message">
+                <div class="col-11" style="padding-right:0">
+                    <textarea rows="1" id="message-box" placeholder="type message here..." class="pt-1 pb-1" [(ngModel)]="message"></textarea>
+                </div>
+                <div class="col-1" style="padding-left:0;position: relative; top: -5px">
+                    <button type="button" mat-icon-button (click)="sendMessage()"><mat-icon>send</mat-icon></button>
+                </div>
+            </div>
+</div>
