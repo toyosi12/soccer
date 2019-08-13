@@ -1,0 +1,67 @@
+<form [formGroup]="updateForm" (ngSubmit)="updateProfile(updateForm.value)">
+        <div class="container-fluid">
+                <div class="row">
+                        <div class="col-md-12">
+                            <h5>SETTINGS</h5>
+                            <h6>Edit profile</h6>
+
+                        </div>
+                        <div class="col-md-6">
+                                <img (click)="fileInput.click()" src={{passportPath}} alt="user avatar" id='avatar' style="width:60px !important;height:60px; cursor:pointer" class="mr-3" />
+                                <input #fileInput mat-button type="file" style="display:none" (change)="displayPassport($event.target.files)">
+                                <!-- <button type="button" mat-button style="background-color:#999;" class="mr-3" (click)="fileInput.click()">Edit
+                                    Passport</button> -->
+                        </div>
+                   
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                                <mat-form-field appearance="outline">
+                                        <mat-label>Last Name</mat-label>
+                                        <input matInput formControlName="lname" />
+                                </mat-form-field>
+                        </div>
+        
+                        <div class="col-md-4">
+                                        <mat-form-field appearance="outline">
+                                                <mat-label>First Name</mat-label>
+                                                <input matInput formControlName="fname" />
+                                        </mat-form-field>
+                        </div>
+        
+                        <div class="col-md-4">
+                                        <mat-form-field appearance="outline">
+                                                <mat-label>Email</mat-label>
+                                                <input matInput formControlName="email" />
+                                        </mat-form-field>
+                        </div>
+        
+                        <div class="col-md-4">
+                                        <mat-form-field appearance="outline">
+                                                <mat-label>Phone</mat-label>
+                                                <input matInput formControlName="phone" />
+                                        </mat-form-field>
+                        </div>
+        
+                        <div class="col-md-4">
+                                        <mat-form-field appearance="outline">
+                                                <mat-label>Sport</mat-label>
+                                                <input matInput formControlName="sport" />
+                                        </mat-form-field>
+                        </div>
+        
+                        <div class="col-md-4">
+                                        <mat-form-field appearance="outline">
+                                                <mat-label>School</mat-label>
+                                                <input matInput formControlName="school" />
+                                        </mat-form-field>
+                        </div>
+        
+                       
+        
+                        <div class="col-md-12">
+                                <button mat-raised-button color="primary" id="update-btn" [disabled]="!updateForm.valid" class="mb-4">{{ buttonText }}</button>
+                        </div>
+        
+                </div>
+        </div>
+        </form>

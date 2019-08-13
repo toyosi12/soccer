@@ -1,5 +1,5 @@
 <div class="container-fluid">
-        <div class="card shadow mt-2" style="border-radius: 5px;" id="body">
+        <div class="card shadow mt-2" style="border-radius: 5px;" #scrollMe id="body">
                 <div class="pt-2">
                         <button type="button" mat-icon-button title="Go back" routerLink="/home/messages"><mat-icon style="font-size: 1.9em">keyboard_arrow_left</mat-icon></button>
                         <img src="{{passportPath}}" alt="user avater" id='avatar' />
@@ -12,6 +12,10 @@
                                     <span><i>me:</i></span>
                                     <div>
                                         {{ c.message }}
+                                        <br />
+                                        <span *ngIf="c.sent == 'Y'"><small><mat-icon style="font-size:1em; width: 18px">done</mat-icon>{{c.date_sent}}</small></span>
+                                        <span *ngIf="c.sent != 'Y'"><small><mat-icon style="font-size:1em; width: 18px">query_builder</mat-icon></small></span>
+
                                     </div>
                                 </div>
 
@@ -20,12 +24,14 @@
                                         <span><i>{{first_name}}:</i></span>
                                         <div>{{ c.message }}
                                             <br />
-                                            <span><small><mat-icon>mark</mat-icon>{{c.date_sent}}</small></span>
+                                            <span><small>{{c.date_sent}}</small></span>
                                         </div>
                                 </div>
                             </div>
                         </div>
                 </div>
+                <mat-progress-spinner class="mx-auto" [style.display]="messageLoaded ? 'none' : 'block'" [diameter]= "20" mode="indeterminate"></mat-progress-spinner>
+
             </div>
 
             <div class="row" id="message">

@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row">
+            <div class="col-md-12">
+                    <button type="button" class="btn btn-secondary mr-3">Sport</button>
+                    <button type="button" class="btn btn-secondary mr-3">Position</button>
+                    <button type="button" class="btn btn-secondary mr-3">Year</button>
+                <main class="card mt-3">
+                    
+                    <div class="card-header">
+                                <div class="card-title">Team Members</div>
+                            </div>
+                    <div class="card-body" style="max-height:400px; overflow-y:scroll">
+                        <div class="card mt-3 animated fadeIn shadow" *ngFor = "let r of teamMembers">
+                            <a (click)="handleRoute(r)">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img *ngIf="r.passport != null && r.passport != ''" src="{{basePath + r.passport}}" style="width:50px; height:50px" class="rounded-circle" />{{passportPath}}
+                                            <img *ngIf="r.passport == null || r.passport == ''" src="../../assets/avatar.png" style="width:50px; height:50px" class="rounded-circle" />{{passportPath}}
+                                        </div>
+                                        <div class="col-7">
+                                            <p>{{r.last_name}}</p>
+                                        </div>
+                                        
+                                        <div class="col-2 text-right">
+                                            <!-- <button type="button" mat-icon-button title="view"><mat-icon>visibility</mat-icon></button> -->
+                                            <!-- <button type="button" mat-icon-button title="delete" (click)="deleteUser(r.user_id)"><mat-icon style="color: red">delete</mat-icon></button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            </div>
+                    </div>
+                </main>
+            </div>
+    </div>
+</div>

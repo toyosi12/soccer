@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MessagesComponent implements OnInit {
   public teamMembers;
+  public teamMembersLength;
   public basePath = "http://localhost:8080/soccer-api/"
 
   constructor(private _userService : UserService, private fb: FormBuilder,private snackBar: MatSnackBar,
@@ -23,6 +24,7 @@ export class MessagesComponent implements OnInit {
   getTeamMembers(){
     this._userService.getTeamMembers().subscribe(data => {
       this.teamMembers = data.filter(data => data.status == 'accepted');
+      this.teamMembersLength = this.teamMembers.length;
       console.log(this.teamMembers);
 
     })

@@ -17,6 +17,10 @@ import { AdminGuard } from './admin.guard';
 import { TeamMemberComponent } from './team-member/team-member.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailsComponent } from './message-details/message-details.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { QuickWorkoutComponent } from './quick-workout/quick-workout.component';
+import { TeamStatsComponent } from './team-stats/team-stats.component';
+import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   { path: '', redirectTo: '/reg/login', pathMatch: 'full' },
   { 
@@ -38,7 +42,11 @@ const routes: Routes = [
       {path: 'team-board', component: TeamBoardComponent},
       {path: 'team-board/:id', component: TeamMemberComponent},
       {path: 'messages', component: MessagesComponent},
-      {path: 'messages/:id', component: MessageDetailsComponent}
+      {path: 'messages/:id', component: MessageDetailsComponent},
+      {path: 'notifications', component: NotificationsComponent},
+      {path: 'quick-workout', component: QuickWorkoutComponent},
+      {path: 'team-stats', component: TeamStatsComponent},
+      {path: 'settings', component: SettingsComponent}
     ]
   },
   {

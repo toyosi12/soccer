@@ -77,7 +77,7 @@ export class TeamBoardComponent implements OnInit {
 
   sendInvite(details){
     let smessage;
-    this.buttonText2 = "Send Invite";
+    this.buttonText2 = "Loading...";
     this._userService.sendInvite(details).subscribe(data => {
       if(data.success){
         smessage = "Invitation sent successfully";
@@ -89,7 +89,7 @@ export class TeamBoardComponent implements OnInit {
       setTimeout(()=>{
         this.snackBarRef.dismiss();
       },5000);
-      this.buttonText = "Save Team";
+      this.buttonText2 = "Send Invite";
 
     })
   }

@@ -5,7 +5,7 @@
         </div>
         <div class="col-md-6 mb-3">
                 <img (click)="fileInput.click()" src={{passportPath}} alt="user avatar" id='avatar' style="width:60px !important;height:60px; cursor:pointer" class="mr-3" />
-                <input #fileInput mat-button type="file" style="display:none" (change)="displayPassport($event.target.files)">
+                <input #fileInput mat-button type="file" style="display:none" >
                 <!-- <button type="button" mat-button style="background-color:#999;" class="mr-3" (click)="fileInput.click()">Edit
                     Passport</button> -->
         </div>

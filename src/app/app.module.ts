@@ -37,6 +37,10 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageDetailsComponent } from './message-details/message-details.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { QuickWorkoutComponent } from './quick-workout/quick-workout.component';
+import { TeamStatsComponent } from './team-stats/team-stats.component';
+import { SettingsComponent } from './settings/settings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +63,11 @@ import { MessageDetailsComponent } from './message-details/message-details.compo
     LogoutAdminComponent,
     TeamMemberComponent,
     MessagesComponent,
-    MessageDetailsComponent
+    MessageDetailsComponent,
+    NotificationsComponent,
+    QuickWorkoutComponent,
+    TeamStatsComponent,
+    SettingsComponent
   ],
   imports: [
     CommonModule,

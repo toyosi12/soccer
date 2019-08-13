@@ -121,6 +121,7 @@
         <tr *ngFor="let event of events">
           <td>
             <input
+            style="min-width:200px"
               type="text"
               class="form-control"
               [(ngModel)]="event.title"

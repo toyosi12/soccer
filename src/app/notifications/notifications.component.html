@@ -1,0 +1,30 @@
+<!-- Display for coach -->
+<div *ngIf="userDetails.user_type == 'coach'" class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+                <h5>Notification</h5>
+                <p>Broadcast message to all team members</p>
+            <div class="form-group">
+                <textarea rows="7" [(ngModel)]="message" class="form-control"></textarea>
+
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-success" (click)="sendMessage()">Send Notification</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="userDetails.user_type == 'athlete'" class="container-fluid">
+        <div class="row">
+                <div class="col-md-12">
+                        <h5>My Notifications</h5>
+                        <div class="card shadow-lg mt-2" *ngFor= "let notification of notifications">
+                            <div class="card-body">
+                                {{ notification.message }}
+                                <p><small>Sent on: {{notification.date_sent}} </small></p>
+                            </div>
+                        </div>
+                </div>  
+        </div>
+</div>

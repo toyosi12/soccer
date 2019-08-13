@@ -3,6 +3,7 @@
         <div class="col-md-12">
 
             <div style="max-height:400px; overflow-y:scroll">
+                <p *ngIf="teamMembersLength == 0">You have no team member</p>
                 <div class="card mt-3 animated fadeIn shadow" *ngFor = "let r of teamMembers">
                     <a (click)="handleRoute(r)">
                         <div class="card-body">
