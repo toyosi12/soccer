@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "sw-build": "ng build --prod && node build/fix-sw",
-    "sw-build-live": "ng build --prod --base-href http://localhost:8080/ && node build/fix-sw"
+    "sw-build-live": "ng build --prod --base-href https://ionicbasis.com/ && node build/fix-sw"
   },
   "private": true,
   "dependencies": {

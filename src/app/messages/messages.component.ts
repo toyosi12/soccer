@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class MessagesComponent implements OnInit {
   public teamMembers;
   public teamMembersLength;
-  public basePath = "http://localhost:8080/soccer-api/"
+  public basePath = "https://ionicbasis.com/soccer-api/"
 
   constructor(private _userService : UserService, private fb: FormBuilder,private snackBar: MatSnackBar,
     private router: Router) { }

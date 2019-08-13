@@ -16,7 +16,7 @@ export class TeamMemberComponent implements OnInit {
   public phone;
   public school;
   public sport;
-  public basePath = "http://localhost:8080/soccer-api/";
+  public basePath = "https://ionicbasis.com/soccer-api/";
   public passportPath;
   constructor(private users: UserService, private route: ActivatedRoute) { }
 

@@ -10,7 +10,7 @@ import { NotificationServiceService } from '../notification-service.service';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnDestroy {
-  public basePath = "http://localhost:8080/soccer-api/"
+  public basePath = "https://ionicbasis.com/soccer-api/"
   public passportPath;
   public userType;
   mobileQuery: MediaQueryList;

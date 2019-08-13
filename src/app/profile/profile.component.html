@@ -1,11 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom:100px">
         <div class="row">
                 <div class="col-md-12">
                         <h5>MY PROFILE</h5>
                 </div>
-                <div class="col-md-6">
-                        <div class="card">
-                                <div class="card-header">
+                <div class="col-md-6 mt-3">
+                        <div class="card shadow">
+                                <div class="card-header bg-success text-white">
                                         Info
                                 </div>
                                 <div class="card-body">
@@ -14,11 +14,122 @@
                                                         <img src={{passportPath}} style="width:150px" />
                                                 </div>
                                                 <div class="col-md-8">
-                                                        <h6></h6>
+                                                        <p>Name: {{ userDetails.last_name + " " + userDetails.first_name }}</p>
+                                                        <p>Team: {{ myTeam }}</p>
+                                                        <p>School: {{ userDetails.school }}</p>
+                                                        <p>Sport: {{ userDetails.sport }}</p>
+                                                        
                                                 </div>
                                         </div>
                                 </div>
                         </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                                <div class="card shadow">
+                                                <div class="card-header bg-success text-white">
+                                                        My Timeline
+                                                </div>
+                                                <div class="card-body">
+                                                        <textarea rows="5" class="form-control" placeholder="What's on your mind...."></textarea>
+                                                        <button type="button" class="btn btn-success mt-2">Post</button>
+                                                </div>
+                                </div>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-6 mt-3">
+                        <div class="card shadow">
+                                        <div class="card-header bg-success text-white">
+                                                Friend Requests
+                                        </div>
+                                        <div class="card-body" style="max-height: 400px; overflow-y: scroll;">
+                                                <p *ngIf="friendRequests.length == 0">You have no friend requests</p>
+                                                <div class="card mt-3 animated fadeIn shadow" *ngFor = "let r of friendRequests">
+                                                        <div class="card-body">
+                                                                <div class="row">
+                                                                <div class="col-3">
+                                                                        <img *ngIf="r.passport != null && r.passport != ''" src="{{basePath + r.passport}}" style="width:50px; height:50px" class="rounded-circle" />
+                                                                        <img *ngIf="r.passport == null || r.passport == ''" src="../../assets/avatar.png" style="width:50px; height:50px" class="rounded-circle" />
+                                                                </div>
+                                                                <div class="col-6">
+                                                                        <p>{{r.user_name}}</p>
+                                                                </div>
+                                                                
+                                                                <div class="col-3 text-right">
+                                                                                <button type="button" mat-icon-button style="background-color: green; border:none; color: #fff; box-shadow: 3px 3px 3px #777" title="Accept Request" (click)="acceptRequest(r.user_id)">
+                                                                                <mat-icon >check</mat-icon>
+                                                                        </button> 
+                                                                        <!-- <button type="button" mat-icon-button title="delete" (click)="deleteUser(r.user_id)"><mat-icon style="color: red">delete</mat-icon></button> -->
+                                                                </div>
+                                                                </div>
+                                                        </div>
+                                                        
+                                                </div>
+                                        </div>
+                        </div>
+                </div>
+
+                <div class="col-md-6 mt-3">
+                                <div class="card shadow">
+                                                <div class="card-header bg-success text-white">
+                                                        Friend Suggestions
+                                                </div>
+                                                <div class="card-body" style="max-height: 400px; overflow-y: scroll;">
+                                                <div class="card mt-3 animated fadeIn shadow" *ngFor = "let r of friendSuggestions">
+                                                        <div class="card-body">
+                                                                <div class="row">
+                                                                <div class="col-3">
+                                                                        <img *ngIf="r.passport != null && r.passport != ''" src="{{basePath + r.passport}}" style="width:50px; height:50px" class="rounded-circle" />
+                                                                        <img *ngIf="r.passport == null || r.passport == ''" src="../../assets/avatar.png" style="width:50px; height:50px" class="rounded-circle" />
+                                                                </div>
+                                                                <div class="col-6">
+                                                                        <p>{{r.user_name}}</p>
+                                                                </div>
+                                                                
+                                                                <div class="col-3 text-right">
+                                                                        <button type="button" mat-icon-button style="background-color: green; border:none; color: #fff; box-shadow: 3px 3px 3px #777" title="Add Friend" (click)="addFriend(r.user_id)">
+                                                                                <mat-icon *ngIf="friendSuggestions.accepted == null">add</mat-icon><small *ngIf="friendSuggestions.accepted == 'N'">sent</small>
+                                                                        </button>
+                                                                </div>
+                                                                </div>
+                                                        </div>
+                                                        
+                                                </div>
+                                        </div>
+                                </div>
+                </div>
+                <div class="col-md-6 mt-3">
+                                <div class="card shadow">
+                                                <div class="card-header bg-success text-white">
+                                                        Friends
+                                                </div>
+                                                <div class="card-body" style="max-height: 400px; overflow-y: scroll;">
+                                                <p *ngIf="allFriends.length == 0">You have no friends</p>
+                                                <div class="card mt-3 animated fadeIn shadow" *ngFor = "let r of allFriends">
+                                                <a (click)="handleRoute(r)">
+                                                        <div class="card-body">
+                                                                <div class="row">
+                                                                <div class="col-3">
+                                                                        <img *ngIf="r.passport != null && r.passport != ''" src="{{basePath + r.passport}}" style="width:50px; height:50px" class="rounded-circle" />
+                                                                        <img *ngIf="r.passport == null || r.passport == ''" src="../../assets/avatar.png" style="width:50px; height:50px" class="rounded-circle" />
+                                                                </div>
+                                                                <div class="col-6">
+                                                                        <p>{{r.user_name}}</p>
+                                                                </div>
+                                                                
+                                                                <div class="col-3 text-right">
+                                                                        <!-- <button type="button" mat-icon-button style="background-color: green; border:none; color: #fff; box-shadow: 3px 3px 3px #777" title="Add Friend" (click)="addFriend(r.user_id)">
+                                                                                <mat-icon *ngIf="friendSuggestions.accepted == null">add</mat-icon><small *ngIf="friendSuggestions.accepted == 'N'">sent</small>
+                                                                        </button> -->
+                                                                        <!-- <button type="button" mat-icon-button title="delete" (click)="deleteUser(r.user_id)"><mat-icon style="color: red">delete</mat-icon></button> -->
+                                                                </div>
+                                                                </div>
+                                                        </div>
+                                                </a>
+                                                        
+                                                </div>
+                                        </div>
+                                </div>
                 </div>
         </div>
 </div>

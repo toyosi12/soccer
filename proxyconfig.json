@@ -1,6 +1,6 @@
   {
     "/soccer-api": {
-      "target": "http://localhost:8080",
+      "target": "https://ionicbasis.com",
       "secure": false,
       "changeOrigin": true
     }

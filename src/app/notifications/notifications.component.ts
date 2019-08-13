@@ -14,7 +14,7 @@ export class NotificationsComponent implements OnInit {
   public message;
   public snackBarRef;
   public buttonText = "Send Notification";
-  public userDetails = [];
+  public userDetails:any = [];
   public notifications = [];
   ngOnInit() {
     this.user.getUserDetails().subscribe(data => {

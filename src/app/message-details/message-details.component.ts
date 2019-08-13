@@ -11,7 +11,7 @@ import { NotificationServiceService } from '../notification-service.service';
 })
 export class MessageDetailsComponent implements OnInit, AfterViewChecked {
   @ViewChild('scrollMe', {static: true}) private myScrollContainer: ElementRef;
-  public basePath = "http://localhost:8080/soccer-api/";
+  public basePath = "https://ionicbasis.com/soccer-api/";
   public passportPath;
   public _users;
   public user;

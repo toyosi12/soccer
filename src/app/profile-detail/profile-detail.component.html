@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+            <div class="col-md-12 mt-3">
+                    <div class="card shadow">
+                            <div class="card-header bg-success text-white">
+                                    Info
+                            </div>
+                            <div class="card-body">
+                                    <div class="row">
+                                            <div class="col-md-4">
+                                                    <img src={{passportPath}} style="width:150px" />
+                                            </div>
+                                            <div class="col-md-8">
+                                                    <p>Name: {{ userDetails.last_name + " " + userDetails.first_name }}</p>
+                                                    <!-- <p>Team: {{ myTeam }}</p> -->
+                                                    <p>School: {{ userDetails.school }}</p>
+                                                    <p>Sport: {{ userDetails.sport }}</p>
+                                                    
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>

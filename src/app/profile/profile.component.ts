@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,23 +16,20 @@ export class ProfileComponent implements OnInit {
   public image = "../../assets/avatar.png";
   public passport;
   public snackBarRef;
-  public basePath = "http://localhost:8080/soccer-api/"
+  public basePath = "https://ionicbasis.com/soccer-api/"
   public passportPath;
-  public buttonText = "Update"
+  public buttonText = "Update";
+  public userDetails: any = [];
+  public myTeam;
+  public friendSuggestions = [];
+  public allFriends = [];
+  public friendRequests = [];
   selectedFile: File = null;
+  public my_id;
 
   constructor(private fb: FormBuilder, private auth: AuthService, private _userService: UserService,
-              private snackBar: MatSnackBar) {
-    this.updateForm = this.fb.group({
-      lname:['', Validators.compose([Validators.required])],
-      fname:['', Validators.compose([Validators.required])],
-      phone:['', Validators.compose([Validators.required])],
-      email:['', Validators.compose([Validators.required, Validators.email])],
-      sport:['', Validators.compose([Validators.required])],
-      school:['', Validators.compose([Validators.required])],
-
-
-    })
+              private snackBar: MatSnackBar, private router: Router) {
+   
    }
 
   ngOnInit() {
@@ -40,20 +37,34 @@ export class ProfileComponent implements OnInit {
       this.userTypes = data;
     })
     this._userService.getUserDetails().subscribe(data => {
-      this.updateForm.controls["lname"].setValue(data[0].last_name);
-      this.updateForm.controls["fname"].setValue(data[0].first_name);
-      this.updateForm.controls["email"].setValue(data[0].email);
-      this.updateForm.controls["phone"].setValue(data[0].phone);
-      this.updateForm.controls["school"].setValue(data[0].school);
-      this.updateForm.controls["sport"].setValue(data[0].sport);
+     this.userDetails = data[0];
+     console.log(this.userDetails);
       this.passportPath = (data[0].passport == null || data[0].passport == "") 
     ? "../../assets/avatar.png" 
     : this.basePath + "" + data[0].passport;
     });
 
+    this._userService.getMyTeam().subscribe(data => {
+      this.myTeam = data[0].team_name;
+    })
+     
+    this.getMyDetails();
     
-
     
+  }
+  getMyDetails(){
+    this._userService.getUserDetails().subscribe(data=>{
+      this.my_id  = data[0].user_id;
+      this.getFriendSuggestions();
+      
+      //get friends
+      this._userService.getFriends().subscribe(data => {
+        this.allFriends = data.filter(data => data.accepted == 'Y');
+        this.friendRequests = data.filter(data => data.accepted == 'N' 
+                                          && data.sender_id != this.my_id);
+        console.log(data);
+      })
+    })
   }
 
   displayPassport(files: File[]) {
@@ -103,4 +114,31 @@ export class ProfileComponent implements OnInit {
     });
    
   }
+
+  getFriendSuggestions(){
+    this._userService.getFriendSuggestions().subscribe(data => {
+      this.friendSuggestions = data;
+      console.log(this.friendSuggestions);
+    })
+  }
+
+  addFriend(user_id){
+    this._userService.addFriend({user_id: user_id}).subscribe(data => {
+      if(data.success){
+        this.getFriendSuggestions();
+      }
+    })
+  }
+
+  acceptRequest(user_id){
+    this._userService.acceptRequest({user_id: user_id}).subscribe(data =>{
+      this.getMyDetails();
+    })
+  }
+
+  handleRoute(r){
+    this.router.navigate(['/home/profile-detail', r.user_id])
+  }
+
+
 }

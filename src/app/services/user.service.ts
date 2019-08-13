@@ -69,6 +69,27 @@ export class UserService {
     return this.http.get<any>("/soccer-api/logout.php");
   }
 
+  getFriendSuggestions(){
+    return this.http.get<any>("/soccer-api/get-friend-suggestions.php");
+  }
+
+  addFriend(user_id){
+    return this.http.post<any>("/soccer-api/add-friend.php",user_id);
+
+  }
+
+  getFriends(){
+    return this.http.get<any>("/soccer-api/get-friends.php");
+
+  }
+
+  acceptRequest(user_id){
+    return this.http.post<any>("/soccer-api/accept-friend-request.php", user_id)
+  }
+
+  getCurrentUserDetails(user_id){
+    return this.http.post<any>("/soccer-api/get-current-user-details.php", user_id);
+  }
   
 
 }

@@ -19,7 +19,7 @@ export class TeamBoardComponent implements OnInit {
   public teamMembers;
   public teamName;
   public invitedMembers;
-  public basePath = "http://localhost:8080/soccer-api/"
+  public basePath = "https://ionicbasis.com/soccer-api/"
 
   constructor(private _userService : UserService, private fb: FormBuilder,private snackBar: MatSnackBar,
               private router: Router) { 
