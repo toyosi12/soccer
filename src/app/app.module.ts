@@ -42,6 +42,7 @@ import { QuickWorkoutComponent } from './quick-workout/quick-workout.component';
 import { TeamStatsComponent } from './team-stats/team-stats.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
+import { CreateTeamComponent } from './create-team/create-team.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +70,8 @@ import { ProfileDetailComponent } from './profile-detail/profile-detail.componen
     QuickWorkoutComponent,
     TeamStatsComponent,
     SettingsComponent,
-    ProfileDetailComponent
+    ProfileDetailComponent,
+    CreateTeamComponent
   ],
   imports: [
     CommonModule,

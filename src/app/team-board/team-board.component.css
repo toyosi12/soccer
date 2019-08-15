@@ -5,3 +5,15 @@ form *:not(button){
 a{
     cursor: pointer;
 }
+
+.create-team{
+    background-color: #085708;
+    color: #fff;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    box-shadow: 8px 8px 17px #ada9a9;
+    transition: box-shadow 0.7s;
+}
+.create-team:hover{
+    box-shadow:none;
+}

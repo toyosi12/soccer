@@ -38,7 +38,6 @@ export class ProfileComponent implements OnInit {
     })
     this._userService.getUserDetails().subscribe(data => {
      this.userDetails = data[0];
-     console.log(this.userDetails);
       this.passportPath = (data[0].passport == null || data[0].passport == "") 
     ? "../../assets/avatar.png" 
     : this.basePath + "" + data[0].passport;
@@ -62,7 +61,6 @@ export class ProfileComponent implements OnInit {
         this.allFriends = data.filter(data => data.accepted == 'Y');
         this.friendRequests = data.filter(data => data.accepted == 'N' 
                                           && data.sender_id != this.my_id);
-        console.log(data);
       })
     })
   }
@@ -118,7 +116,6 @@ export class ProfileComponent implements OnInit {
   getFriendSuggestions(){
     this._userService.getFriendSuggestions().subscribe(data => {
       this.friendSuggestions = data;
-      console.log(this.friendSuggestions);
     })
   }
 

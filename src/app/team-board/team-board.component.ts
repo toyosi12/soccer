@@ -19,6 +19,11 @@ export class TeamBoardComponent implements OnInit {
   public teamMembers;
   public teamName;
   public invitedMembers;
+  public hasTeam: boolean;
+  public hasTeamMembers: boolean;
+  public loading =true;
+  public step = 0;
+  public myTeam;
   public basePath = "https://ionicbasis.com/soccer-api/"
 
   constructor(private _userService : UserService, private fb: FormBuilder,private snackBar: MatSnackBar,
@@ -46,6 +51,8 @@ export class TeamBoardComponent implements OnInit {
     this._userService.saveTeam(details).subscribe(data => {
       if(data.success){
         smessage = "Successful!";
+        this.step = 3;
+        this.hasTeam = true;
       }else{
         smessage = "Failed, Please try again";
       }
@@ -60,12 +67,29 @@ export class TeamBoardComponent implements OnInit {
 
   getTeam(){
     this._userService.getMyTeam().subscribe(data => {
+      this.loading = false;
+      //if he has no team
+      if(data.length == 0){
+        this.hasTeam = false;
+        this.step = 1;
+      }else{
+        this.hasTeam = true;
+        this.step = 4;
+      }
       this.teamForm.controls['teamName'].setValue(data[0].team_name);
+      this.myTeam = data[0].team_name;
+
     })
   }
 
   getTeamMembers(){
     this._userService.getTeamMembers().subscribe(data => {
+      if(data.length > 0){
+        this.hasTeamMembers = true;
+      }else{
+        this.hasTeamMembers = false;
+        this.step = 3;
+      }
       this.teamMembers = data.filter(data => data.status == 'accepted');
       console.log(this.teamMembers);
 
@@ -74,7 +98,29 @@ export class TeamBoardComponent implements OnInit {
     })
   }
 
+  createTeam(){
+    this.step = 2;
+  }
 
+  _viewTeamMembers(){
+    this.step = 5;
+  }
+  
+  _sendInvite(){
+    this.step = 6
+  }
+
+  _editTeam(){
+    this.step = 7;
+  }
+
+  goBack(){
+    if(this.hasTeamMembers){
+      this.step = 4
+    }else{
+      this.step = 3
+    }
+  }
   sendInvite(details){
     let smessage;
     this.buttonText2 = "Loading...";

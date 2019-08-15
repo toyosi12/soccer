@@ -16,12 +16,16 @@ export class NotificationsComponent implements OnInit {
   public buttonText = "Send Notification";
   public userDetails:any = [];
   public notifications = [];
+  public my_id;
+  public allFriends = [];
+  public friendRequests = [];
   ngOnInit() {
     this.user.getUserDetails().subscribe(data => {
       this.userDetails = data[0];
     })
 
     this.getNotifications();
+    this.getMyDetails();
   }
 
   sendMessage(){
@@ -47,6 +51,27 @@ export class NotificationsComponent implements OnInit {
   getNotifications(){
     this._notificationService.getNotifications().subscribe(data => {
       this.notifications = data;
+    })
+  }
+
+  getMyDetails(){
+    this.user.getUserDetails().subscribe(data=>{
+      this.my_id  = data[0].user_id;
+      //this.getFriendSuggestions();
+      
+      //get friends
+      this.user.getFriends().subscribe(data => {
+        this.allFriends = data.filter(data => data.accepted == 'Y');
+        this.friendRequests = data.filter(data => data.accepted == 'N' 
+                                          && data.sender_id != this.my_id);
+        // console.log(data);
+      })
+    })
+  }
+
+  acceptRequest(user_id){
+    this.user.acceptRequest({user_id: user_id}).subscribe(data =>{
+      this.getMyDetails();
     })
   }
 
