@@ -33,10 +33,10 @@ export class MessageDetailsComponent implements OnInit, AfterViewChecked {
     }
 
   ngOnInit() {
-    this.scrollToBottom();
+    //this.scrollToBottom();
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.recipient_id = id;
-    this.users.getTeamMembers().subscribe(data => {
+    this.users.getAllUsers().subscribe(data => {
       this._users = data;
       this.user = this._users.filter(data => data.user_id == id)[0];
       this.passportPath = (this.user.passport == null || this.user.passport == "") 
@@ -46,6 +46,9 @@ export class MessageDetailsComponent implements OnInit, AfterViewChecked {
     this.last_name = this.user.last_name;
     this.getMyDetails();
     this.getChats();
+    setInterval(()=>{
+      this.getChats()
+    }, 4000);
     
     })
       
@@ -56,7 +59,7 @@ export class MessageDetailsComponent implements OnInit, AfterViewChecked {
 
   }
   ngAfterViewChecked() {        
-    this.scrollToBottom();        
+    //this.scrollToBottom();        
 } 
 
   scrollToBottom(){
@@ -85,7 +88,7 @@ export class MessageDetailsComponent implements OnInit, AfterViewChecked {
                 if(data.success){
                   this.getChats();
                   //this.message = "";
-                  this.scrollToBottom();
+                  //this.scrollToBottom();
                 }
                 // this.chatsToDisplay = [...this.chatsToDisplay, {
                 //   message: this.message, sender_id:this.my_id, recipient_id: this.recipient_id, sent:"N"
@@ -103,10 +106,11 @@ export class MessageDetailsComponent implements OnInit, AfterViewChecked {
                         
                         this._notificationService.addPushSubscriber(trans).subscribe(res => {
                         console.log(res); 
-                        this.message = "";
+                        
                       })
                       })
                   })
+                  this.message = "";
               })
   }
 }

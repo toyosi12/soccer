@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <p *ngIf="!loaded; else elseBlock">Loading...</p>
+        <ng-template #elseBlock>
+                <div class="col-md-12 mt-3">
+                        <div class="card shadow">
+                                <div class="card-header bg-success text-white">
+                                        User info
+                                </div>
+                                <div class="card-body">
+                                        <div class="row">
+                                                <div class="col-md-4">
+                                                        <img src={{passportPath}} style="width:150px" />
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <h4>{{ userDetails.last_name + " " + userDetails.first_name }}</h4>
+                                                        <hr />
+                                                        <p>Team: {{ myTeam }}</p>
+                                                        <p>School: {{ userDetails.school }}</p>
+                                                        <p>Sport: {{ userDetails.sport }}</p>
+                                                        <div class="form-group">
+                                                            <a (click)="addFriend(userDetails.user_id)" class="btn btn-success mr-2 mb-2" *ngIf="this.friendship == 'not-friends'">
+                                                                <span>{{ buttonText }}</span>
+                                                            </a>
+                                                            <!-- <a class="btn btn-success mr-2"  *ngIf="this.friendship == 'friends'">
+                                                                <span>Friend</span>
+                                                            </a> -->
+                                                            <a class="btn mb-2" style="background-color: #eee;" *ngIf="this.friendship == 'friend-request-sent'">
+                                                                <span>Friend Request Sent</span>
+                                                            </a>
+                                                            <a class="btn mb-2" style="background-color: #eee;" (click)="handleRoute(userDetails.user_id)">Send Message</a>
+                                                        </div>
+                                                        
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </ng-template>
+    </div>
+</div>

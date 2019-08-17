@@ -32,6 +32,15 @@ export class UserService {
   getUsers(){
     return this.http.get<any>("/soccer-api/get_users.php");
   }
+
+  getUserMessages(){
+    return this.http.get<any>("/soccer-api/get-user-messages.php");
+  }
+
+  getAllUsers(){
+    return this.http.get<any>("/soccer-api/get_all_users.php");
+
+  }
   saveTeam(details){
     return this.http.post<any>("/soccer-api/save-team.php", details);
   }
@@ -63,6 +72,16 @@ export class UserService {
 
   getChats(data){
     return this.http.post<any>("/soccer-api/get-chats.php",data);
+
+  }
+
+  otherUserDetails(data){
+    return this.http.post<any>("/soccer-api/get-other-user-details.php",data);
+
+  }
+
+  checkFriendship(data){
+    return this.http.post<any>("/soccer-api/check-friendship.php",data);
 
   }
   logout() {

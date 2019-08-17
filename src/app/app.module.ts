@@ -43,6 +43,7 @@ import { TeamStatsComponent } from './team-stats/team-stats.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
+import { OtherProfileComponent } from './other-profile/other-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,8 @@ import { CreateTeamComponent } from './create-team/create-team.component';
     TeamStatsComponent,
     SettingsComponent,
     ProfileDetailComponent,
-    CreateTeamComponent
+    CreateTeamComponent,
+    OtherProfileComponent
   ],
   imports: [
     CommonModule,

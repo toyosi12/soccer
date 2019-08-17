@@ -12,13 +12,14 @@ import { Router } from '@angular/router';
 export class MessagesComponent implements OnInit {
   public teamMembers;
   public teamMembersLength;
+  public users
   public basePath = "https://ionicbasis.com/soccer-api/"
 
   constructor(private _userService : UserService, private fb: FormBuilder,private snackBar: MatSnackBar,
     private router: Router) { }
 
   ngOnInit() {
-    this.getTeamMembers();
+    this.getUserMessages();
   }
 
   getTeamMembers(){
@@ -28,6 +29,16 @@ export class MessagesComponent implements OnInit {
       console.log(this.teamMembers);
 
     })
+  }
+
+  getUserMessages(){
+    this._userService.getUserDetails().subscribe(da => { 
+      this._userService.getUserMessages().subscribe(data => {
+        this.users = data.filter(data => data.user_name != da[0].user_name);
+        console.log(this.users);
+      })
+  })
+
   }
   
   handleRoute(r){

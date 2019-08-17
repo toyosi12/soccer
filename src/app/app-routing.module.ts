@@ -23,6 +23,7 @@ import { TeamStatsComponent } from './team-stats/team-stats.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
+import { OtherProfileComponent } from './other-profile/other-profile.component';
 const routes: Routes = [
   { path: '', redirectTo: '/reg/login', pathMatch: 'full' },
   { 
@@ -50,7 +51,8 @@ const routes: Routes = [
       {path: 'quick-workout', component: QuickWorkoutComponent},
       {path: 'team-stats', component: TeamStatsComponent},
       {path: 'settings', component: SettingsComponent},
-      {path: 'create-team', component: CreateTeamComponent}
+      {path: 'create-team', component: CreateTeamComponent},
+      {path: 'user/:user', component: OtherProfileComponent},
     ]
   },
   {

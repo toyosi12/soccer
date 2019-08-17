@@ -3,12 +3,25 @@
                 <div class="col-md-12">
                         <h5>MY PROFILE</h5>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-12 mb-3">
                                 <a style="background-color: #eee;" class="btn btn-light btn-sm mr-1">Roaster</a>
                                 <a style="background-color: #eee;" class="btn btn-light btn-sm mr-1">Playbook</a>
                         
                                 <a style="background-color: #eee;" class="btn btn-light btn-sm mr-1">Recruiting</a>
                                 <a routerLink="/home/team-board" style="background-color: #eee;" class="btn btn-light btn-sm mr-1">TeamBoard</a>
+                </div>
+                <div class="col-md-12">
+                       
+                                        <ng-select
+                                        [items]="allUsers"
+                                        placeholder="Search here..."
+                                        bindValue="user_name"
+                                        bindLabel="user_name"
+                                        [(ngModel)]="searchedUser"
+                                        (change)="searchUser()"
+                                    >
+            
+                                    </ng-select>
                 </div>
                 <div class="col-md-6 mt-3">
                         <div class="card shadow">

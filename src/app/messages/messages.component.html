@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-12">
 
-            <div style="max-height:400px; overflow-y:scroll">
+            <div>
                 <p *ngIf="teamMembersLength == 0">You have no team member</p>
-                <div class="card mt-3 animated fadeIn shadow" *ngFor = "let r of teamMembers">
+                <div class="card mt-3 animated fadeIn shadow" *ngFor = "let r of users">
                     <a (click)="handleRoute(r)">
                         <div class="card-body">
                             <div class="row">
@@ -13,7 +13,7 @@
                                     <img *ngIf="r.passport == null || r.passport == ''" src="../../assets/avatar.png" style="width:50px; height:50px" class="rounded-circle" />{{passportPath}}
                                 </div>
                                 <div class="col-7">
-                                    <p>{{r.last_name}}</p>
+                                    <p>{{r.user_name}}</p>
                                 </div>
                                 
                                 <div class="col-2 text-right">

@@ -26,7 +26,8 @@ export class ProfileComponent implements OnInit {
   public friendRequests = [];
   selectedFile: File = null;
   public my_id;
-
+  public allUsers;
+  public searchedUser;
   constructor(private fb: FormBuilder, private auth: AuthService, private _userService: UserService,
               private snackBar: MatSnackBar, private router: Router) {
    
@@ -48,8 +49,15 @@ export class ProfileComponent implements OnInit {
     })
      
     this.getMyDetails();
+    this._userService.getAllUsers().subscribe(data => {
+      this.allUsers = data;
+    })
     
     
+  }
+
+  searchUser(){
+    this.router.navigate(['/home/user', this.searchedUser]);
   }
   getMyDetails(){
     this._userService.getUserDetails().subscribe(data=>{
@@ -134,7 +142,7 @@ export class ProfileComponent implements OnInit {
   }
 
   handleRoute(r){
-    this.router.navigate(['/home/profile-detail', r.user_id])
+    this.router.navigate(['/home/user', r.user_name])
   }
 
 

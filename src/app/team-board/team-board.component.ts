@@ -141,7 +141,8 @@ export class TeamBoardComponent implements OnInit {
   }
 
   handleRoute(r){
-    this.router.navigate(['/home/team-board', r.user_id])
-  }
+    this.router.navigate(['/home/user', r.user_name]);
+    }
+  
 
 }
